@@ -20,13 +20,14 @@ api = Api(app)
 
 class ApiTest(Resource):
 	def get(self, query):
-		data = parse_payload(query.lower())
-		print(data)
+		data = parse_payload(query)
 		# do processing on data
-		return data
+
+		
+		return query
 
 
 api.add_resource(ApiTest, "/api/<string:query>")
 if __name__ == '__main__':
 	parser = reqparse.RequestParser()
-	app.run(debug=True, host="0.0.0.0", port=8000)
+	app.run(debug=True, host="0.0.0.0", port=5000)
