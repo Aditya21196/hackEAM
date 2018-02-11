@@ -31,7 +31,11 @@ class ApiTest(Resource):
 		
 		# do processing on data
 		finalStr=SlashError(data["name"])
-		img=stringToBGR(finalStr)
+		imgdata = base64.b64decode(finalStr)
+		filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
+		with open(filename, 'wb') as f:
+		    f.write(imgdata
+		img=imread(filename,1)
 
 		if data["id"]=="1":
 			return glaucoma(img)
@@ -117,11 +121,11 @@ def SlashError(string):
     string = string.replace('^', '=')
     return string
 
-def stringToBGR(base64_string):
-    imgdata = base64.b64decode(str(base64_string))
-    image = Image.open(io.BytesIO(imgdata))
-    image_data = np.asarray(image)
-    return image_data
+# def stringToBGR(base64_string):
+#     imgdata = base64.b64decode(str(base64_string))
+#     image = Image.open(io.BytesIO(imgdata))
+#     image_data = np.asarray(image)
+#     return image_data
 
 
 api.add_resource(ApiTest, "/api/<string:query>")
