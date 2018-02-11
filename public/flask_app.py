@@ -125,4 +125,4 @@ def stringToBGR(base64_string):
 api.add_resource(ApiTest, "/api/<string:query>")
 if __name__ == '__main__':
 	parser = reqparse.RequestParser()
-	app.run(debug=True, host="0.0.0.0", port=5000)
+	app.run(debug=True, host="0.0.0.0", port=80)
