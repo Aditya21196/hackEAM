@@ -9,6 +9,7 @@ import numpy as np
 from math import hypot
 import base64
 from PIL import Image
+import io
 
 
 def parse_payload(string):
