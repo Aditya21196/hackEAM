@@ -35,7 +35,7 @@ class ApiTest(Resource):
 		filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
 		with open(filename, 'wb') as f:
 		    f.write(imgdata
-		img=imread(filename,1)
+		img=cv2.imread(filename,1)
 
 		if data["id"]=="1":
 			return glaucoma(img)
