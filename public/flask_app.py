@@ -34,7 +34,7 @@ class ApiTest(Resource):
 		imgdata = base64.b64decode(finalStr)
 		filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
 		with open(filename, 'wb') as f:
-		    f.write(imgdat)
+		    f.write(imgdata)
 		img=cv2.imread(filename,1)
 
 		if data["id"]=="1":
