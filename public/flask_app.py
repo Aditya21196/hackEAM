@@ -120,7 +120,8 @@ def SlashError(string):
 def stringToBGR(base64_string):
     imgdata = base64.b64decode(str(base64_string))
     image = Image.open(io.BytesIO(imgdata))
-    return image
+    image_data = np.asarray(image)
+    return image_data
 
 
 api.add_resource(ApiTest, "/api/<string:query>")
