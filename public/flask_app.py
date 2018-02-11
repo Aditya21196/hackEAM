@@ -6,7 +6,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 import cv2
 import numpy as np
-from math import hypot
+from math import hypot,sqrt
 import base64
 from PIL import Image
 import io
@@ -113,8 +113,8 @@ def glaucoma(imgR):
 
 
 
-def catarct(img):
-	img = cv2.cvtColor( imgR, cv2.COLOR_BGR2GRAY)
+def catarct(imgN):
+	img = cv2.cvtColor( imgN, cv2.COLOR_BGR2GRAY)
 	img = cv2.medianBlur(img,3)
 	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,120,param1=50,param2=50,minRadius=30,maxRadius=0)
 	circles = np.uint16(np.around(circles))
@@ -124,12 +124,15 @@ def catarct(img):
 
 	print x,y,r
 
+	xr=x
+	yr=y
+
 
 
 
 	# Brightness ++++
 
-	hsv = cv2.cvtColor( imgR, cv2.COLOR_BGR2HSV)
+	hsv = cv2.cvtColor( imgN, cv2.COLOR_BGR2HSV)
 	h,s,v = cv2.split(hsv)
 	v += 250
 	final_hsv = cv2.merge ((h,s,v))
