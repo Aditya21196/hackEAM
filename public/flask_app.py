@@ -6,7 +6,6 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 from math import hypot
 import base64
 from PIL import Image
